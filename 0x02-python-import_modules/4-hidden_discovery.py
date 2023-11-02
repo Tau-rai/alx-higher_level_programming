@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-import re
+import py_compile
 
 if __name__ == "__main__":
-    with open("hidden_4.py", "r") as src_file:
-        src_file = src_file.read()
+    m_code = py_compile.compile("hidden_4.py")
 
-    matches = re.findall(r'\b[^_][^_]*_[^_]+\b', src_file)
-    
-    for word in matches:
-        print(word)    
+    names = [name for name in m_code.co_names if not name.startswith("__")]
+
+    s_names = sorted(names)
+
+    for name in s_names:
+        print("{}".format(name))
