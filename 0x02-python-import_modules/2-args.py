@@ -5,7 +5,7 @@ if __name__ == "__main__":
     cmd = nargs - 1
 
     if nargs == 1:
-        print("{:d} argument.".format(cmd))
+        print("{:d} arguments.".format(cmd))
     elif nargs == 2:
         print("{:d} argument:\n{:d}: {:s}".format(cmd, cmd, sys.argv[1]))
     else:
