@@ -33,7 +33,7 @@ int is_palindrome(listint_t **head)
 	next = slow;
 	prev->next = NULL;
 
-	mid = (mid == NULL) ? reverse_list(&next) : mid;
+	mid = (mid == NULL) ? rev_list(&next) : mid;
 
 	listint_t *f_half = *head;
 	listint_t *sec_half = mid;
@@ -50,8 +50,8 @@ int is_palindrome(listint_t **head)
 	}
 
 	/* restore the orig list */
-	reverse_list(&mid);
-	reverse_list(head);
+	rev_list(&mid);
+	rev_list(head);
 
 	return (flag);
 }
