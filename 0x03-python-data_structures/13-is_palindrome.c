@@ -1,6 +1,7 @@
 #include "lists.h"
+#include <stddef.h>
 
-int is_palindrome(listint_t **head);
+listint_t *rev_list(listint_t **head);
 /**
  * is_palindrome - checks if a list is a palindrome
  * @head: pointer to a linked list
@@ -31,16 +32,8 @@ int is_palindrome(listint_t **head)
 
 	next = slow;
 	prev->next = NULL;
-	/* reverse the half of the list*/
-	while (next != NULL)
-	{
-		next = slow->next;
-		slow->next = prev;
-		prev = slow;
-		slow = next;
-	}
 
-	mid = (mid == NULL) ? prev : mid;
+	mid = (mid == NULL) ? reverse_list(&next) : mid;
 
 	listint_t *f_half = *head;
 	listint_t *sec_half = mid;
@@ -57,22 +50,31 @@ int is_palindrome(listint_t **head)
 	}
 
 	/* restore the orig list */
-	prev = NULL;
-	while (mid != NULL)
-	{
-		next = mid->next;
-		mid->next = prev;
-		prev = mid;
-		mid = next;
-	}
-	prev = NULL;
-	while (*head != NULL)
-	{
-		next = (*head)->next;
-		(*head)->next = prev;
-		prev = *head;
-		*head = next;
-	}
+	reverse_list(&mid);
+	reverse_list(head);
 
 	return (flag);
 }
+/**
+ * rev_list - reverses a linked list
+ * @head: pointer to a node
+ * Return: pointer to the head node
+ */
+listint_t *rev_list(listint_t **head)
+{
+	listint_t *prev = NULL;
+	listint_t *current = *head;
+	listint_t *next = NULL;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	*head = prev;
+
+	return (*head);
+}
+
