@@ -85,11 +85,17 @@ class Rectangle:
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
+        """
+        Trcaks the deletion of an instance of a Rectangle
+        """
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
+        """
+        compares two rectangles and returns the biggest
+        """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
@@ -101,4 +107,7 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
+        """
+        creates a square as an intance of the Rectablge class
+        """
         return cls(width=size, height=size)
