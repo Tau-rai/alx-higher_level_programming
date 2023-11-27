@@ -15,16 +15,16 @@ def text_indentation(text):
         raise TypeError("text must be a string")
     delims = [".", "?", ":"]
 
-    new_lines = []
+    nw_lines = []
     start = 0
     for k, char in enumerate(text):
         if char in delims:
-            new_lines.append(text[start:k+1].strip())
+            nw_lines.append(text[start:k+1].strip())
             start = k+1
-    new_lines.append(text[start:].strip())
-    #remove white spaces from each line
-    new_lines = [line.strip() for line in new_lines]
+    nw_lines.append(text[start:].strip())
 
-    if new_lines:
-        print("\n\n".join(new_lines[:-1]), end="\n\n" if new_lines[:-1] else "")
-        print(new_lines[-1], end="")
+    nw_lines = [line.strip() for line in nw_lines]
+
+    if nw_lines:
+        print("\n\n".join(nw_lines[:-1]), end="\n\n" if nw_lines[:-1] else "")
+        print(nw_lines[-1], end="")
