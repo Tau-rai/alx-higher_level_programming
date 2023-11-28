@@ -1,0 +1,1 @@
+This directory focuses on a deep dive into OOP in Python, where Everything is an object.
