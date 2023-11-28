@@ -12,13 +12,13 @@ class Rectangle:
         """
         Initialising the Rectangle instance
         """
-        if not isinstance(width, int):
+        if type(width) is not int:
             raise TypeError("width must be an integer")
         if width < 0:
             raise ValueError("width must be >= 0")
         self.__width = width
 
-        if not isinstance(height, int):
+        if type(height) is not int:
             raise TypeError("width must be an integer")
         if height < 0:
             raise ValueError("width must be >= 0")
