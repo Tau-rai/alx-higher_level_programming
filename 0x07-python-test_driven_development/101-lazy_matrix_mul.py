@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""Module that has a function that multiplies 2 matrices by using the module NumPy
+"""Module with a function that multiplies 2 matrices by using the module NumPy
 """
 
 
 import numpy as np
+
 
 def lazy_matrix_mul(m_a, m_b):
     """Function that multiplies 2 matrices by using the module NumPy
@@ -33,4 +34,4 @@ def lazy_matrix_mul(m_a, m_b):
         result = np.matmul(m_a, m_b)
     except ValueError:
         raise ValueError("m_a and m_b can't be multiplied")
-    return result.tolist()
+    return result
