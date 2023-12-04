@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-"""This module contains a class that inherits from the BaseGeometry class
+"""
+This module contains a class that inherits from the BaseGeometry class
 """
 
 
 class BaseGeometry:
-    """A geometry class
+    """
+    A geometry super class with two subclasses
+    and use two methods one that calculates area and a validator
     """
     def area(self):
         """A function that calculates area
@@ -69,7 +72,9 @@ class Square(Rectangle):
         super().__init__(size, size)
         self.__size = size
 
-    def area(self):
-        """A function that calculates the area of the square
+    def area(self) -> int:
+        """
+        A function that calculates the area of the square
+        Returns: the square of size
         """
         return self.__size ** 2

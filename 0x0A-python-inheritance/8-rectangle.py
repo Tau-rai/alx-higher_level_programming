@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-"""This module contains a class that inherits from the BaseGeometry class
+"""
+This module contains a class that inherits from the BaseGeometry class
+the subclasses are Rectangle and Square
 """
 
 
 class BaseGeometry:
-    """A geometry class
+    """
+    A geometry super class with two subclasses
+    and use two methods one that calculates area and a validator
     """
     def area(self):
-        """A function that calculates area
+        """
+        A function that calculates area
         """
         raise Exception("area() is not implemented")
 
