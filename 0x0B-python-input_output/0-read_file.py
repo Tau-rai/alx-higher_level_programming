@@ -11,8 +11,6 @@ def read_file(filename=""):
     Args:
         filename (str): must be a text file containing strings. Defaults to "".
     """
-    with open(filename, encoding="utf-8") as f:
-        read_data = f.readlines()
-        for line in read_data:
-            print(line, end='')
-        print()
+    with open(filename, "r", encoding="utf-8") as f:
+        read_data = f.read()
+        print(read_data)
