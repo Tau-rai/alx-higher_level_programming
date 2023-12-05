@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This module contains a superclass and a subclass.
-The MyList class inherits from the built-in list class 
+The MyList class inherits from the built-in list class
 and adds a method to print a sorted version of the list.
 """
 
