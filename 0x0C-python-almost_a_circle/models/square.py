@@ -43,7 +43,7 @@ class Square(Rectangle):
         Returns:
             str: a string rep of square
         """
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {super().width}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     def update(self, *args, **kwargs):
         """A method that assigns arguments to each attribute

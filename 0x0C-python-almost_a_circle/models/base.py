@@ -101,7 +101,8 @@ class Base:
 
         with open(filename, "w", newline="") as csvfile:
             if list_objs is not None and len(list_objs) > 0:
-                writer = csv.DictWriter(csvfile, fieldnames=list_objs[0].to_dictionary().keys())
+                fields = list_objs[0].to_dictionary().keys()
+                writer = csv.DictWriter(csvfile, fieldnames=fields)
                 writer.writeheader()
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())

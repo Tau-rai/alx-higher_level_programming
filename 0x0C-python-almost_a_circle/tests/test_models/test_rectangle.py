@@ -27,12 +27,12 @@ class TestRectangle(unittest.TestCase):
         rect1 = Rectangle(7, 3)
         self.assertEqual(rect1.area(), 21)
 
-    def test_Rectangle_typeError(self):
+    def test_typeError(self):
         Rect = Rectangle(7, 5)
         with self.assertRaises(TypeError):
             Rect.width = "unknown"
 
-    def test_Rectangle_valueError(self):
+    def test_valueError(self):
         Rect = Rectangle(9, 3)
         with self.assertRaises(ValueError):
             Rect.width = 0
@@ -43,11 +43,11 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             Rectangle(2, 0)
 
-    def test_Rectangle_str_rep(self):
+    def test_str_rep(self):
         Rect = Rectangle(5, 9, 2, 3, 1)
         self.assertEqual(str(Rect), "[Rectangle] (1) 2/3 - 5/9")
 
-    def test_Rectangle_update_args(self):
+    def test_update_args(self):
         Rect = Rectangle(5, 9, 2, 3, 1)
         Rect.update(7, 27, 37, 17, 57)
         self.assertEqual(Rect.id, 7)
@@ -56,7 +56,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(Rect.x, 17)
         self.assertEqual(Rect.y, 57)
 
-    def test_Rectangle_to_dictionary(self):
+    def test_to_dictionary(self):
         Rect = Rectangle(5, 9, 2, 3, 1)
         exp_dict = {'id': 1, 'width': 5, 'height': 9, 'x': 2, 'y': 3}
         self.assertEqual(Rect.to_dictionary(), exp_dict)
@@ -64,7 +64,7 @@ class TestRectangle(unittest.TestCase):
     def test_to_json_string(self):
         obj = Rectangle(1, 2)
         res = Base.to_json_string([obj.to_dictionary()])
-        self.assertEqual(res, '[{"id": 18, "width": 1, "height": 2, "x": 0, "y": 0}]')
+        self.assertEqual(res, '[{"id": 16, "width": 1, "height": 2, "x": 0, "y": 0}]')
 
         res = Base.to_json_string(None)
         self.assertEqual(res, '[]')
@@ -77,7 +77,7 @@ class TestRectangle(unittest.TestCase):
 
         with open("Base.json", "r") as f:
             cont = f.read()
-            self.assertEqual(cont, '[{"id": 17, "width": 1, "height": 7, "x": 0, "y": 0}]')
+            self.assertEqual(cont, '[{"id": 15, "width": 1, "height": 7, "x": 0, "y": 0}]')
 
     def test_from_json_string(self):
         json_string = '[{"id": 1}, {"id": 2}]'
@@ -111,6 +111,14 @@ class TestRectangle(unittest.TestCase):
             Rectangle(1, 2, -1, 2)
         with self.assertRaises(ValueError):
             Rectangle(1, 2, 1, -2)
+
+    def test_create_None_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle.create(None)
+
+    def test_create_invalid_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle.create("unknown")
 
     # def test_create(self):
     #     obj = Base.create(id=5)

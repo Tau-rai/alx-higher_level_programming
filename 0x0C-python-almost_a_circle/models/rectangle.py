@@ -87,12 +87,9 @@ class Rectangle(Base):
     def display(self):
         """A method that displays the rectangle with # characters
         """
-        output = []
         symbol = str(self.char_sym)
-        for _ in range(self.__y):
-            output.append(" " * self.__x)
-        for _ in range(self.__height):
-            output.append(" " * self.__x + symbol * self.__width)
+        output = [" " * self.__x] * self.__y
+        output += [" " * self.__x + symbol * self.__width] * self.__height
         print("\n".join(output))
 
     def __str__(self) -> str:
@@ -101,7 +98,9 @@ class Rectangle(Base):
         Returns:
             str: string representation of the output
         """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
+        s = "[Rectangle] ({}) {}/{} - {}/{}"
+        id = self.id
+        return s.format(id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
         """A method that assigns arguments to each attribute
