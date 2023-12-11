@@ -36,6 +36,12 @@ class TestRectangle(unittest.TestCase):
         Rect = Rectangle(9, 3)
         with self.assertRaises(ValueError):
             Rect.width = 0
+    
+    def test_zero_values(self):
+        with self.assertRaises(ValueError):
+            Rectangle(0, 2)
+        with self.assertRaises(ValueError):
+            Rectangle(2, 0)
 
     def test_Rectangle_str_rep(self):
         Rect = Rectangle(5, 9, 2, 3, 1)
@@ -58,7 +64,7 @@ class TestRectangle(unittest.TestCase):
     def test_to_json_string(self):
         obj = Rectangle(1, 2)
         res = Base.to_json_string([obj.to_dictionary()])
-        self.assertEqual(res, '[{"id": 10, "width": 1, "height": 2, "x": 0, "y": 0}]')
+        self.assertEqual(res, '[{"id": 18, "width": 1, "height": 2, "x": 0, "y": 0}]')
 
         res = Base.to_json_string(None)
         self.assertEqual(res, '[]')
@@ -71,7 +77,7 @@ class TestRectangle(unittest.TestCase):
 
         with open("Base.json", "r") as f:
             cont = f.read()
-            self.assertEqual(cont, '[{"id": 9, "width": 1, "height": 7, "x": 0, "y": 0}]')
+            self.assertEqual(cont, '[{"id": 17, "width": 1, "height": 7, "x": 0, "y": 0}]')
 
     def test_from_json_string(self):
         json_string = '[{"id": 1}, {"id": 2}]'
@@ -80,6 +86,31 @@ class TestRectangle(unittest.TestCase):
 
         res = Base.from_json_string(None)
         self.assertEqual(res, [])
+
+    def test_update_with_incorrect_arguments(self):
+        Rect = Rectangle(5, 9, 2, 3, 1)
+        with self.assertRaises(TypeError):
+            Rect.update(width="unknown")
+
+    def test_non_integer_values(self):
+        with self.assertRaises(TypeError):
+            Rectangle(1.5, 2)
+        with self.assertRaises(TypeError):
+            Rectangle(2, 1.5)
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 1.5, 2)
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 1, 2.5)
+
+    def test_negative_values(self):
+        with self.assertRaises(ValueError):
+            Rectangle(-1, 2)
+        with self.assertRaises(ValueError):
+            Rectangle(2, -1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, -1, 2)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, 1, -2)
 
     # def test_create(self):
     #     obj = Base.create(id=5)

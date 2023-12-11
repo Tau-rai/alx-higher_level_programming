@@ -53,6 +53,17 @@ class TestSquare(unittest.TestCase):
         exp_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
         self.assertEqual(sqr.to_dictionary(), exp_dict)
 
+    def test_large_values(self):
+        Square(10**6)
+
+    def test_non_integer_values(self):
+        with self.assertRaises(TypeError):
+            Square(1.5)
+
+    def test_negative_values(self):
+        with self.assertRaises(ValueError):
+            Square(-1)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,6 +6,7 @@ This module contanins a class Base
 
 import json
 import os
+import csv
 
 
 class Base:
@@ -42,7 +43,7 @@ class Base:
         """Writes the JSON to str representation of list_objs
 
         Args:
-            list_objs (list): a list od instances who inherits of Base
+            list_objs (list): a list of instances who inherits of Base
         """
         list_dicts = []
         if list_objs is not None:
@@ -67,10 +68,10 @@ class Base:
         Args:
             **dictionary: a dict of attr names and values
         """
-        if cls.__name__ == "Square":
-            dummy = cls(1)
-        elif cls.__name__ == "Rectangle":
+        if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
         # set real attribute values using the update method
         dummy.update(**dictionary)
 
@@ -88,3 +89,37 @@ class Base:
         with open(file, 'r') as f:
             list_dicts = cls.from_json_string(f.read())
         return [cls.create(**dict_) for dict_ in list_dicts]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes dict onjects to csv file
+
+        Args:
+            list_objs (list): a list of python objects
+        """
+        filename = cls.__name__ + ".csv"
+
+        with open(filename, "w", newline="") as csvfile:
+            if list_objs is not None and len(list_objs) > 0:
+                writer = csv.DictWriter(csvfile, fieldnames=list_objs[0].to_dictionary().keys())
+                writer.writeheader()
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a list of objs
+        """
+        filename = cls.__name__ + ".csv"
+        list_objs = []
+        try:
+            with open(filename, "r") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    for key, value in row.items():
+                        row[key] = int(value)
+
+                    list_objs.append(cls.create(**row))
+        except FileNotFoundError:
+            pass
+        return list_objs
