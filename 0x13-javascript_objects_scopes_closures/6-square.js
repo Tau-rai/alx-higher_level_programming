@@ -5,8 +5,8 @@ class Square extends ParentSquare {
   charPrint (c) {
     if (c !== undefined) {
       let i;
-      for (i = 0; i < this.size; i++) {
-        console.log('C'.repeat(this.size));
+      for (i = 0; i < this.height; i++) {
+        console.log(c.repeat(this.width));
       }
     } else {
       this.print();
