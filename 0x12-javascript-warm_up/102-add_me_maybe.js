@@ -2,5 +2,5 @@
 
 module.exports.addMeMaybe = function (number, theFunction) {
   number++;
-  theFunction();
+  theFunction(number);
 };
