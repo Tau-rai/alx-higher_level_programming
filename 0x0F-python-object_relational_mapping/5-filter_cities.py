@@ -25,5 +25,5 @@ if __name__ == "__main__":
                     WHERE states.name = %s ORDER BY cities.id ASC", (arg[4],))
     rows = cur.fetchall()
     print(", ".join(city[0] for city in rows))
-cur.close()
-conn.close()
+    cur.close()
+    conn.close()

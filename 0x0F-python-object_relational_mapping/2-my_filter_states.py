@@ -19,8 +19,8 @@ if __name__ == "__main__":
     }
     conn = MySQLdb.connect(**params)
     cur = conn.cursor()
-    cur.execute(f"SELECT * FROM states \
-                WHERE name = '{args[4]}' ORDER BY id ASC")
+    cur.execute("SELECT * FROM states \
+                WHERE name = '{}' ORDER BY id ASC".format(args[4]))
     rows = cur.fetchall()
     for row in rows:
         print(row)
