@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" This module contains a script that list items from a database
+"""
+ This script list all states from the database
 """
 
 

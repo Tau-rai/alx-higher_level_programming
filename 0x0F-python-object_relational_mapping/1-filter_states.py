@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains a script that list items from a database
+This script lists all states items from the database
+that start with captial letter N
 """
 
 
