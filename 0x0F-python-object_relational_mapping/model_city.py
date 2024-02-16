@@ -1,25 +1,24 @@
 #!/usr/bin/python3
 """
-This module contains the class definition of a State
+This module contains the class definition of a City
 and an instance of the sqlalchemy declarative_base
 """
 
 
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from model_state import Base
 from sqlalchemy.orm import relationship
 
-# create a declarative base for mapping classes to db tables
-Base = declarative_base()
 
-
-class State(Base):
+class City(Base):
     """A class that inherits from Base
     """
-    __tablename__ = 'states'
+    __tablename__ = 'cities'
+
     id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
     name = Column(String(128), nullable=False)
-    cities = relationship("City", back_populates="state")
+    state_id = Column(Integer, ForeignKey('states.id'),  nullable=False)
+    state = relationship("State", back_populates="cities")
 
 
 if __name__ == "__main__":
