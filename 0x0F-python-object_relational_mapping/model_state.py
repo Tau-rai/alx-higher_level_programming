@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module contains the class definition of a State
 and an instance of the sqlalchemy declarative_base
