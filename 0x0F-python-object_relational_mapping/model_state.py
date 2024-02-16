@@ -1,3 +1,9 @@
+"""
+This module contains the class definition of a State
+and an instance of the sqlalchemy declarative_base
+"""
+
+
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -10,7 +16,7 @@ Base = declarative_base()
 
 
 class State(Base):
-    """A class that inerits from Base
+    """A class that inherits from Base
     """
     __tablename__ = 'states'
     id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
