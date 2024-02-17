@@ -24,6 +24,6 @@ class State(Base):
 
 if __name__ == "__main__":
     # connect to the database
-    DB_URI = 'mysql+mysqldb://Tau:Changamire#97@localhost:3306/hbtn_0e_6_usa'
+    DB_URI = 'mysql+mysqldb://alx:Dombo@97@localhost:3306/hbtn_0e_6_usa'
     engine = create_engine(DB_URI, pool_pre_ping=True)
     Base.metadata.create_all(engine)

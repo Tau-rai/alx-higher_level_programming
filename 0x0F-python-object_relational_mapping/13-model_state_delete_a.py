@@ -22,8 +22,10 @@ if __name__ == "__main__":
     # create a session
     session = Session(engine)
 
-    # filter the states from the database and delete 
-    states_with_a = session.query(State).filter(State.name.like('%a%')).delete()
+    # filter the states from the database and delete
+    states_del = session.query(State).filter(State.name.like("%a%")).delete()
 
+    # commiting the transaction
     session.commit()
+
     session.close()
