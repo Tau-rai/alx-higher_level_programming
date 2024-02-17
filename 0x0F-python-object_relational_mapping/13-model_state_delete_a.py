@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     try:
         # filter the states from the database and delete
-        states_del = session.query(State).filter(State.name.like("%a%")).delete()
+        states = session.query(State).filter(State.name.like("%a%")).delete()
 
         # commiting the transaction
         session.commit()
