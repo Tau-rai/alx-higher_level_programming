@@ -22,13 +22,12 @@ if __name__ == "__main__":
     # create a session
     session = Session(engine)
 
-    try:
-        # filter the states from the database and delete
-        states = session.query(State).filter(State.name.like("%a%")).delete()
-
-        # commiting the transaction
+    
+    # filter the states from the database and delete
+    states_del = session.query(State).filter(State.name.like("%a%"))
+    if states_del:
+        for state in states_del:
+            session.delete(state)
         session.commit()
-    except Exception as e:
-        print("An error occurred: {}".format(e))
-    finally:
-        session.close()
+
+    session.close()
