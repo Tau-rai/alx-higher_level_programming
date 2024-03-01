@@ -14,8 +14,8 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         value = sys.argv[1]
     else:
-        value = ""  
-    req = requests.post(url, data={'q': ""})
+        value = ""
+    req = requests.post(url, data={'q': value})
 
     try:
         data = req.json()
