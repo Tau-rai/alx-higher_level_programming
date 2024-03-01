@@ -9,14 +9,14 @@ import sys
 from urllib import request, error
 
 
-if __name__ == "__main__":
-    req = request.Request(sys.argv[1])
+def request_sent(url):
     try:
-        with request.urlopen(req) as response:
-            body = response.read().decode('utf-8')
+        with request.urlopen(url) as response:
+            body = response.read()
+            print(body.decode('utf-8'))
     except error.HTTPError as e:
-        print('Error code: ', e.code)
-    except error.URLError as e:
-        print('Error code: ', e.reason)
-    else:
-        print(body)
+        print('Error code: {}'.format(e.code))
+
+
+if __name__ == "__main__":
+    request_sent(sys.argv[1])
