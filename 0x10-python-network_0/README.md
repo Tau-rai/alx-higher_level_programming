@@ -1,6 +1,6 @@
 # README
 
-This file explains various web concepts that are covered in this reposistory through project tasks.
+This file explains various web concepts that are covered in this directory through project tasks.
 
 ## URL
 
