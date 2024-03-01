@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains a python scrript that fetches a url
+This module contains a python script that fetches a url
 """
 
 
