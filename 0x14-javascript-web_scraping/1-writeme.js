@@ -8,7 +8,5 @@ const dataString = argv[3];
 fs.writeFile(file, dataString, 'utf8', err => {
   if (err) {
     console.error(err);
-  } else {
-    console.log('File successfully written');
   }
 });
